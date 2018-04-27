@@ -81,6 +81,8 @@ struct video_buffer {
 	void *destination_data[2];
 	unsigned int destination_size[2];
 	int request_fd;
+
+	int export_fd;
 };
 
 
@@ -106,6 +108,9 @@ struct display_setup {
 	unsigned int y;
 	unsigned int scaled_width;
 	unsigned int scaled_height;
+
+	unsigned int buffers_count;
+	bool use_dmabuf;
 };
 
 /*
@@ -126,8 +131,8 @@ int video_engine_decode(int video_fd, unsigned int index, struct v4l2_ctrl_mpeg2
 
 /* DRM */
 
-int display_engine_start(int drm_fd, unsigned int crtc_id, unsigned int plane_id, unsigned int width, unsigned int height, struct gem_buffer **buffers, struct display_setup *setup);
-int display_engine_stop(int drm_fd, struct gem_buffer *buffers);
+int display_engine_start(int drm_fd, unsigned int crtc_id, unsigned int plane_id, unsigned int width, unsigned int height, struct video_buffer *video_buffers, unsigned int count, struct gem_buffer **buffers, struct display_setup *setup);
+int display_engine_stop(int drm_fd, struct gem_buffer *buffers, struct display_setup *setup);
 int display_engine_show(int drm_fd, unsigned int index, struct video_buffer *video_buffers, struct gem_buffer *buffers, struct display_setup *setup);
 
 #endif
