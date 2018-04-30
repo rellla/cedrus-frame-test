@@ -82,8 +82,14 @@ static int create_imported_buffer(int drm_fd, int import_fd, struct gem_buffer *
 	}
 
 	// TODO: Support a single handle per plane
-	for (i = 0; i < 4; i++)
+	for (i = 0; i < 2; i++)
 		buffer->handles[i] = handle;
+
+	memset(buffer->pitches, 0, sizeof(buffer->pitches));
+	memset(buffer->offsets, 0, sizeof(buffer->offsets));
+
+	buffer->pitches[0] = buffer->pitches[1] = 864;
+	buffer->offsets[1] = 0x65400;
 
 	return 0;
 }
