@@ -29,6 +29,14 @@ static struct frame bbb_mpeg2_frames[] = {
 #include "data/bbb-mpeg2/frames.h"
 };
 
+static struct frame bbb_mpeg2_1080p_frames[] = {
+#include "data/bbb-mpeg2-1080p/frames.h"
+};
+
+static struct frame bbb_mpeg2_720p_frames[] = {
+#include "data/bbb-mpeg2-720p/frames.h"
+};
+
 static struct frame ed_mpeg2_frames[] = {
 #include "data/ed-mpeg2/frames.h"
 };
@@ -53,6 +61,30 @@ static struct preset presets[] = {
 		.buffers_count = 6,
 		.frames = bbb_mpeg2_frames,
 		.frames_count = sizeof(bbb_mpeg2_frames) / sizeof(bbb_mpeg2_frames[0]),
+	},
+	{
+		.name = "bbb-mpeg2-1080p",
+		.description = "big_buck_bunny_1080p_MPEG2_MP2_25fps_1800K.MPG",
+		.license = "Creative Commons Attribution 3.0",
+		.attribution = "Blender Foundation | www.blender.org",
+		.width = 1920,
+		.height = 1080,
+		.type = CODEC_TYPE_MPEG2,
+		.buffers_count = 6,
+		.frames = bbb_mpeg2_1080p_frames,
+		.frames_count = sizeof(bbb_mpeg2_1080p_frames) / sizeof(bbb_mpeg2_1080p_frames[0]),
+	},
+	{
+		.name = "bbb-mpeg2-720p",
+		.description = "big_buck_bunny_720p_MPEG2_MP2_25fps_1800K.MPG",
+		.license = "Creative Commons Attribution 3.0",
+		.attribution = "Blender Foundation | www.blender.org",
+		.width = 1280,
+		.height = 720,
+		.type = CODEC_TYPE_MPEG2,
+		.buffers_count = 6,
+		.frames = bbb_mpeg2_720p_frames,
+		.frames_count = sizeof(bbb_mpeg2_720p_frames) / sizeof(bbb_mpeg2_720p_frames[0]),
 	},
 	{
 		.name = "ed-mpeg2",
